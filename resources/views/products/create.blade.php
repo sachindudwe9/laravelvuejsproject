@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -34,6 +35,20 @@
 		            <input type="text" name="name" class="form-control" placeholder="Name">
 		        </div>
 		    </div>
+            <div class="row">
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Category:</strong>
+		            <input type="text" name="category" class="form-control" placeholder="Category">
+		        </div>
+		    </div>
+            <div class="row">
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Select image:</strong>
+		            <input type="file" name="img" class="form-control"  accept="image/*">
+		        </div>
+		    </div>
 		    <div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
 		            <strong>Detail:</strong>
@@ -47,5 +62,7 @@
 
 
     </form>
+
+    @endsection
 
 

@@ -22,10 +22,17 @@ class AdminAuthController extends Controller
     public function register(){
        return view("auth.register");
     }
-    public function logout(Request $request) {
-      Auth::logout();
-      return redirect('/login');
-    }
+
+    public function logout(Request $request)
+{
+    Auth::logout();
+
+    $request->session()->invalidate();
+
+    $request->session()->regenerateToken();
+
+    return redirect('/');
+}
 
     public function registerUser(Request $request){
        // echo '<pre>';print_r($request->all());exit;
@@ -77,6 +84,8 @@ class AdminAuthController extends Controller
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);
+
+        
     }
     
 }

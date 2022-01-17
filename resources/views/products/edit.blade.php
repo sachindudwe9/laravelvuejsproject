@@ -1,4 +1,4 @@
-@extends('admin.dashboard')
+@extends('layouts.app')
 
 
 @section('content')
@@ -13,6 +13,8 @@
         </div>
     </div>
 
+    
+    
 
     @if ($errors->any())
         <div class="alert alert-danger">

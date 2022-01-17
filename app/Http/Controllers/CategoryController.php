@@ -2,10 +2,10 @@
     
 namespace App\Http\Controllers;
     
-use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
     
-class ProductController extends Controller
+class CategoryController extends Controller
 { 
     /**
      * Display a listing of the resource.
@@ -14,10 +14,10 @@ class ProductController extends Controller
      */
     function __construct()
     {
-         $this->middleware('permission:product-list|product-create|product-edit|product-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:product-create', ['only' => ['create','store']]);
-         $this->middleware('permission:product-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:product-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:category-list|product-create|product-edit|product-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:category-create', ['only' => ['create','store']]);
+         $this->middleware('permission:category-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:category-delete', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -26,8 +26,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->paginate(5);
-        return view('products.index',compact('products'))
+        $products = category::latest()->paginate(5);
+        return view('category.index',compact('category'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     
@@ -38,7 +38,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        return view('category.create');
     }
     
     /**
@@ -57,8 +57,8 @@ class ProductController extends Controller
     
         Product::create($request->all());
     
-        return redirect()->route('products.index')
-                        ->with('success','Product created successfully.');
+        return redirect()->route('category.index')
+                        ->with('success','Category created successfully.');
     }
     
     /**
@@ -67,9 +67,9 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(category $category)
     {
-        return view('products.show',compact('product'));
+        return view('category.show',compact('prt'));
     }
     
     /**
@@ -78,9 +78,9 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(category $category)
     {
-        return view('products.edit',compact('product'));
+        return view('category.edit',compact('category'));
     }
     
     /**
@@ -90,7 +90,7 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, cateogory $category)
     {
          request()->validate([
             'name' => 'required',
@@ -99,10 +99,10 @@ class ProductController extends Controller
             'detail' => 'required',
         ]);
     
-        $product->update($request->all());
+        $category->update($request->all());
     
         return redirect()->route('products.index')
-                        ->with('success','Product updated successfully');
+                        ->with('success','category updated successfully');
     }
     
     /**
@@ -111,11 +111,11 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Product $category)
     {
         $product->delete();
     
-        return redirect()->route('products.index')
-                        ->with('success','Product deleted successfully');
+        return redirect()->route('cateogy.index')
+                        ->with('success','cateogory deleted successfully');
     }
 }

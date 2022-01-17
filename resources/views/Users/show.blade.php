@@ -18,13 +18,14 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Name:</strong>
-            {{ $user->name }}
+           <label for="" class="text-primary"> {{ $user->name }}</label>
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Email:</strong>
-            {{ $user->email }}
+   <label  class="text-primary">{{ $user->email }}
+</label> 
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -32,10 +33,13 @@
             <strong>Roles:</strong>
             @if(!empty($user->getRoleNames()))
                 @foreach($user->getRoleNames() as $v)
-                    <label class="badge badge-success">{{ $v }}</label>
+                    <label class="badge badge-success text-primary">{{ $v }}</label>
                 @endforeach
             @endif
         </div>
     </div>
+    
+
+
 </div>
 @endsection

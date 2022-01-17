@@ -34,18 +34,18 @@
                 @csrf
               <div class="input-group mb-3">
           <input type="email" class="form-control" placeholder="Email" name="email">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope">@error('email'){{$message}}@enderror</span>
-            </div>
+          <div class="input-group">
+          
+              <span class="fas text-danger">&nbsp;&nbsp;&nbsp; @error('email'){{$message}}@enderror</span>
+            
           </div>
         </div>
         <div class="input-group mb-3">
           <input type="password" class="form-control" placeholder="Password" name="password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock">@error('password'){{$message}}@enderror</span>
-            </div>
+          <div class="input-group">
+            
+              <span class="fas text-danger">&nbsp;&nbsp;&nbsp; @error('password'){{$message}}@enderror</span>
+            
           </div>
         </div>
         <div class="row">
